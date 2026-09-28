@@ -1,40 +1,33 @@
-Without the mod, the workbench takes materials only from your backpack, the Workbench Drawer, and the Tool Cabinets. A material in another cabinet or rack must first go into your backpack by hand, one storage at a time.
+Leave your materials where you keep them. Better Crafting saves you from collecting them cabinet by cabinet before using the workbench.
 
-Better Crafting removes that step. Its first feature, Craft from any storage, fills the workbench grid from all storage of your home with one click on a recipe.
-
-[size=5]Main features[/size]
+[size=5]Craft from any storage[/size]
 [list]
-[*][b]One click fills the grid.[/b] Click a recipe in Crafting Notes. The missing materials move to the workbench grid from the storage of your home. No storage tab to open, no items to move by hand.[/*]
-[*][b]Your home, and only your home.[/b] The same storage as the planting window uses for seeds: the home floor, and each floor and area of your home that is unlocked. Never a locked floor, and never a place outside your home.[/*]
-[*][b]A fixed pick order.[/b] Your backpack first, then the Workbench Drawer and the Tool Cabinets, then the other storage. In each place, clean items before polluted items, and the items that expire first before fresher items.[/*]
-[*][b]All or nothing.[/b] When your home does not have enough of each material, nothing moves, and the game shows its usual message.[/*]
-[*][b]The recipe list counts your home.[/b] The "have / need" counts and the brown border of a recipe with enough materials include the storage of your home.[/*]
-[*][b]Craft Again works.[/b] It fills the grid from the same places.[/*]
-[*][b]Fill only.[/b] The mod never starts a craft. You check the grid and click Craft.[/*]
+[*][b]One click fills the workbench.[/b] Select a recipe in Crafting Notes to fill missing materials from home storage. Craft Again works too.[/*]
+[*][b]See what you can craft.[/b] Recipe material counts and availability borders include home storage.[/*]
+[*][b]Use your backpack first.[/b] Materials come from your backpack, then the Workbench Drawer and Tool Cabinets, then other home storage.[/*]
+[*][b]You choose when to craft.[/b] Review the filled grid, then click Craft.[/*]
 [/list]
+Only storage in unlocked areas of your home is included. If you don't have enough materials for the recipe, nothing moves.
 
-The mod moves items only with the game's own move to the workbench grid. It changes no game file and writes nothing of its own to the save, so you can remove it at any time.
+The mod uses the game's existing system to move materials into the workbench grid and follows the game's storage access rules. It changes no game file and writes nothing of its own to the save, so you can remove it at any time.
 
 [size=5]Compatibility[/size]
-Does not work together with [url=https://www.nexusmods.com/survivallog/mods/4]BaseButler[/url]. When BaseButler is installed, Craft from any storage turns itself off, so use one of the two. The differences, compared with BaseButler 2.0.2:
-[code]
+Use either Better Crafting or [url=https://www.nexusmods.com/survivallog/mods/4]BaseButler[/url]. If both are installed, Better Crafting disables Craft from any storage to avoid conflicts. The differences, compared with BaseButler 2.0.2:
+[code]+--------------+---------------------------+-----------------+
+|              | BaseButler 2.0.2          | Better Crafting |
 +--------------+---------------------------+-----------------+
-|              | BaseButler 2.0.2          | Better Crafting |
-+--------------+---------------------------+-----------------+
-| Windows      | workbench, cooking, trade | workbench only  |
-| Game files   | rewrites 3 web page files | no change       |
-| Storage      | also outside your home    | your home only  |
-| Storage tabs | a tab for each storage    | no extra tab    |
-| Craft        | starts it by itself       | you click Craft |
-+--------------+---------------------------+-----------------+
-[/code]
-To switch from BaseButler to Better Crafting, delete [font=Courier New]BepInEx\plugins\BaseButler.dll[/font]. BaseButler also changes three web page files of the game, and they stay changed after the delete. So then let Steam restore them: in the Library, right-click Survival Log > Properties > Installed Files > Verify integrity of game files. Steam restores only the game's own files: BepInEx and your other mods stay.
+| Windows      | workbench, cooking, trade | workbench only  |
+| Game files   | modifies 3 game files     | no change       |
+| Storage      | also outside your home    | your home only  |
+| Storage tabs | a tab for each storage    | no extra tab    |
+| Craft        | starts it by itself       | you click Craft |
++--------------+---------------------------+-----------------+[/code]
+To switch from BaseButler to Better Crafting, delete [font=Courier New]BepInEx\plugins\BaseButler.dll[/font]. BaseButler's changes to game files remain after you remove its DLL. Restore those files through Steam: in the Library, right-click Survival Log > Properties > Installed Files > Verify integrity of game files. Steam restores only the game's own files: BepInEx and your other mods stay.
 
 [size=5]Requirements[/size]
 [list]
 [*][url=https://www.nexusmods.com/survivallog/mods/12]BepInEx for Survival Log[/url]. Install it first.[/*]
 [/list]
-
 [size=5]Installation[/size]
 [list=1]
 [*]Install [url=https://www.nexusmods.com/survivallog/mods/12]BepInEx[/url] [i](if no other mods were installed before, start the game once so BepInEx finishes setup, then quit)[/i].[/*]
@@ -46,9 +39,8 @@ To switch from BaseButler to Better Crafting, delete [font=Courier New]BepInEx\p
 [/list]
 [/*]
 [/list]
-
 [size=5]Uninstall[/size]
-Delete BetterCrafting.dll from the BepInEx\plugins folder.
+Delete [font=Courier New]BetterCrafting.dll[/font] from the [font=Courier New]BepInEx\plugins[/font] folder.
 
 [size=5]Source and license[/size]
 Open source under GPL-3.0: [url=https://github.com/ivmakk-sl/sl-better-crafting]github.com/ivmakk-sl/sl-better-crafting[/url]

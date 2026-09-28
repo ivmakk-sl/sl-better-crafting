@@ -4,7 +4,7 @@ Tracks the mod's Nexus page details.
 
 - Mod name: Better Crafting
 - Game domain: `survivallog` (add-mod page: https://www.nexusmods.com/survivallog/mods/add)
-- Mod id and URL: not created yet.
+- Mod id and URL: `18`, https://www.nexusmods.com/survivallog/mods/18
 - Category: Miscellaneous. It is the only category the game offers on Nexus.
 - Version: `1.0.0`
 - File name under Manage Files: `Better Crafting 1.0.0`, the zip `BetterCrafting-1.0.0.zip`, marked as the main file. It is the same zip as the GitHub Release asset.
@@ -24,4 +24,4 @@ Tracks the mod's Nexus page details.
 - Full description: `description.bbcode` (paste into the editor's raw BBCode mode).
 - Changelog: `changelog.txt` (the block of each release, newest first). The first release, `1.0.0`, has none.
 - Background: `images/sl-better-crafting-banner.jpg` (1300x372). Set as the mod page background.
-- Gallery images (1920x1080), in this order: `images/sl-better-crafting-thumb.jpg` (title card, pick as the mods-grid thumbnail), `images/sl-better-crafting-sample1.jpg` (the recipe list with the counts of the home), `images/sl-better-crafting-sample2.jpg` (the grid after one click). See `images/README.md` for each role.
+- Gallery images (1920x1080), in this order: `images/sl-better-crafting-thumb.jpg` (title card, pick as the mods-grid thumbnail), `images/sl-better-crafting-sample1.jpg` (the grid after one click, and the counts of the home). See `images/README.md` for each role.

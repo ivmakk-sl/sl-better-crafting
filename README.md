@@ -2,7 +2,9 @@
 
 Better Crafting is a mod for the Steam game *Survival Log*. Its first feature, **Craft from any storage**, lets the workbench take the materials of a recipe from all storage in your home, not only from your backpack, the Workbench Drawer, and the Tool Cabinets.
 
-Without the mod, the workbench fills a recipe only from the backpack (the Inventory tab of the workbench window), the Workbench Drawer, and the Tool Cabinets. Materials in the other cabinets and racks of your home must first go into the backpack by hand. With Better Crafting, one click on a recipe fills the workbench grid from all of them.
+Without the mod, the workbench fills a recipe only from the backpack (the Inventory tab of the workbench window), the Workbench Drawer, and the Tool Cabinets (you can craft more from the [Tool Cabinet](https://survivallog.grandwiki.com/supplies/#item-14094) recipe). A material in another cabinet or rack of your home must first go into one of them by hand.
+
+Nexus page: https://www.nexusmods.com/survivallog/mods/18
 
 ## Craft from any storage
 
