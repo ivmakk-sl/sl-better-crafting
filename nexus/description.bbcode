@@ -16,7 +16,19 @@ Better Crafting removes that step. Its first feature, Craft from any storage, fi
 The mod moves items only with the game's own move to the workbench grid. It changes no game file and writes nothing of its own to the save, so you can remove it at any time.
 
 [size=5]Compatibility[/size]
-Does not work together with BaseButler. When BaseButler is installed, Craft from any storage turns itself off.
+Does not work together with [url=https://www.nexusmods.com/survivallog/mods/4]BaseButler[/url]. When BaseButler is installed, Craft from any storage turns itself off, so use one of the two. The differences, compared with BaseButler 2.0.2:
+[code]
++--------------+---------------------------+-----------------+
+|              | BaseButler 2.0.2          | Better Crafting |
++--------------+---------------------------+-----------------+
+| Windows      | workbench, cooking, trade | workbench only  |
+| Game files   | rewrites 3 web page files | no change       |
+| Storage      | also outside your home    | your home only  |
+| Storage tabs | a tab for each storage    | no extra tab    |
+| Craft        | starts it by itself       | you click Craft |
++--------------+---------------------------+-----------------+
+[/code]
+To switch from BaseButler to Better Crafting, delete [font=Courier New]BepInEx\plugins\BaseButler.dll[/font]. BaseButler also changes three web page files of the game, and they stay changed after the delete. So then let Steam restore them: in the Library, right-click Survival Log > Properties > Installed Files > Verify integrity of game files. Steam restores only the game's own files: BepInEx and your other mods stay.
 
 [size=5]Requirements[/size]
 [list]

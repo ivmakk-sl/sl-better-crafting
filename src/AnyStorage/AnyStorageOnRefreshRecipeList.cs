@@ -56,9 +56,12 @@ namespace BetterCrafting
                     string before = recipe.MaterialsJson.Value;
                     if (string.IsNullOrEmpty(before)) continue;
                     string after = AnyStorageLogic.RecountMaterialsJson(before, haveByName);
-                    if (after == before && recipe.CanCraft.Value == enough) continue;
+                    // The game sets Partial (the mark of a fill from the other tabs) only when CanCraft is false.
+                    bool partial = recipe.Partial.Value && !enough;
+                    if (after == before && recipe.CanCraft.Value == enough && recipe.Partial.Value == partial) continue;
                     recipe.MaterialsJson.Value = after;
                     recipe.CanCraft.Value = enough;
+                    recipe.Partial.Value = partial;
                     changed++;
                     if (firstBefore == null || (!firstHasMore && counts.Count > 1))
                     {

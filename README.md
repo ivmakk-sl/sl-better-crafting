@@ -18,7 +18,7 @@ The mod moves items only with the game's own move to the workbench grid. It chan
 
 ## Compatibility
 
-Does not work together with BaseButler. When BaseButler is installed, Craft from any storage turns itself off, and the log says so.
+Does not work together with [BaseButler](https://www.nexusmods.com/survivallog/mods/4). When BaseButler is installed, Craft from any storage turns itself off, and the log says so.
 
 ## Requirements
 

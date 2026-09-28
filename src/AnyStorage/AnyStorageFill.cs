@@ -54,9 +54,11 @@ namespace BetterCrafting
         }
 
         // The materials of the clicked recipe, or null when the game does not fill it: the game shows the
-        // lock text of a locked recipe and returns before its fill, so the mod does not fill it either.
+        // lock text of a locked recipe and returns before its fill, so the mod does not fill it either. The game
+        // also ignores the click while a craft runs or its product waits on the grid (HandMadeState not Idle).
         public static Dictionary<int, int> Needed(Ac_ToolTable_RecipeClick ac, State_Web_ToolTable state)
         {
+            if (state == null || state.HandMadeState != 0) return null;
             string key = AnyStorageLogic.RecipeKey(ac?.JsonData);
             if (string.IsNullOrEmpty(key) || IsLocked(state, key)) return null;
             var counts = Reducer_Web_ToolTable.CountMaterials(Reducer_Web_ToolTable.ParseMaterialKey(key));
