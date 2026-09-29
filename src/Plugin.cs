@@ -8,7 +8,7 @@ using HarmonyLib;
 
 namespace BetterCrafting
 {
-    [BepInPlugin(PluginGuid, "Better Crafting", "1.0.0")]
+    [BepInPlugin(PluginGuid, "Better Crafting", "1.1.0")]
     [BepInProcess("SurvivalLog.exe")]
     [BepInDependency(AnyStorageFeature.BaseButlerGuid, BepInDependency.DependencyFlags.SoftDependency)]
     public sealed class Plugin : BasePlugin
@@ -26,7 +26,7 @@ namespace BetterCrafting
             Log = base.Log;
             Verbose = Config.Bind(
                 "General", "Verbose", false,
-                "Log each workbench fill of Better Crafting at Debug level. Keep off in normal play.");
+                "Log each scan of the home storage of Better Crafting at Debug level. Keep off in normal play.");
             Harmony = new Harmony(PluginGuid);
             AnyStorageFeature.Patch(Harmony);
             Log.LogInfo("Better Crafting loaded.");

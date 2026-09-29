@@ -1,0 +1,7 @@
+v1.1.0 - 2026-09-29
+Added: A batch craft uses your home storage: its "Max" counts it, and each next craft of the batch fills from it.
+Added: A dye choice fills the workbench from your home storage.
+Changed: Your home storage is now a place of the game's own fill, after the game's tabs (the open tab, then the backpack, the Workbench Drawer, and the Tool Cabinets). The game picks the items in each place by its own rule.
+Changed: Clear sends an item from your home storage to the open tab, not back to its storage.
+Removed: The mod's own pick order (clean items first, the items that expire first before fresher items).
+Removed: Support for game versions before 1.1.18153 (the Autumn Update). This version needs Survival Log 1.1.18153 or later.

@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-29
+
+### Added
+
+- A batch craft uses the storage of your home: its "Max" counts it, and each next craft of the batch fills from it.
+- A dye choice fills the grid from the storage of your home.
+
+### Changed
+
+- The storage of your home is now a place of the game's own fill, after the game's tabs (the tab that is open on the left, then the backpack, the Workbench Drawer, and the Tool Cabinets). The game's own rule picks the items in each place, also in the storage of your home.
+- Clear sends an item from the storage of your home to the tab that is open on the left, not back to its storage. The game's small origin mark still shows on that item on the grid.
+
+### Removed
+
+- The pick order of the mod: clean items before polluted items, and the items that expire first before fresher items.
+- Support for game versions before 1.1.18153 (the Autumn Update). This version needs Survival Log 1.1.18153 or later. On an older version, Craft from any storage turns itself off.
+
 ## [1.0.0] - 2026-09-28
 
 ### Added
