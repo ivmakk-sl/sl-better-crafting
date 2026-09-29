@@ -32,6 +32,8 @@ namespace BetterCrafting
             frame = now;
             furniture = state.CurrentFurnitureId;
             calls = 1;
+            // A scan that throws leaves an empty list, so the later calls of this frame keep the game's list.
+            owners = new List<long>();
             owners = Scan(skip, previousCalls);
             return owners;
         }
