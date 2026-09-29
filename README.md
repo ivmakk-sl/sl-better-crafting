@@ -8,15 +8,17 @@ Nexus page: https://www.nexusmods.com/survivallog/mods/18
 
 ## Craft from any storage
 
-- **One click fills the grid.** Click a recipe in Crafting Notes. When the game's own sources do not have all the materials, the mod moves the missing materials to the workbench grid from the other storage of your home. You do not open a storage tab or move items by hand.
+- **One click fills the grid.** Click a recipe in Crafting Notes. When your backpack, the Workbench Drawer, and the Tool Cabinets do not have all the materials, the game's fill takes the rest from the other storage of your home. You do not open a storage tab or move items by hand.
 - **Your home, and only your home.** The mod uses the same storage as the planting window uses for seeds: the storage on your home floor, and on each floor and area of your home that is unlocked. It never takes items from a locked floor or area, or from a place outside your home.
-- **A fixed pick order.** The mod takes the materials from your backpack first, then from the Workbench Drawer and the Tool Cabinets, then from the other storage. In each place, it takes clean items before polluted items, and the items that expire first before fresher items.
-- **All or nothing.** When your home does not have enough of each material, the mod moves nothing, and the game shows its usual message for missing materials.
-- **The recipe list counts your home.** The "have / need" count of each material and the brown border of a recipe with enough materials include the storage of your home. A recipe that the game locks stays locked.
-- **Craft Again works.** After a craft, Craft Again fills the grid from the same places.
-- **Fill only.** The mod never starts a craft. You check the grid and click Craft.
+- **The game's order.** The fill takes the materials from the tab that is open on the left first, then from the game's other tabs (the backpack, the Workbench Drawer, and the Tool Cabinets), then from the other storage of your home. In each place, the game's own rule picks the items, so a polluted item or a fresh item can go to the grid. Keep an item that you want to save out of your home storage.
+- **All or nothing.** When your home does not have enough of each material, the game moves nothing and shows its usual message for missing materials.
+- **The recipe list counts your home.** The "have / need" count of each material, the brown border of a recipe with enough materials, and the "Max" of a batch craft include the storage of your home. A recipe that the game locks stays locked.
+- **Craft Again, dyes, and batch crafts work.** Craft Again and a dye choice fill the grid from the same places. A batch craft fills each next craft from them too.
+- **Clear sends items to the open tab.** When you click Clear, an item from the storage of your home goes to the tab that is open on the left, not back to its storage. The game's small origin mark still shows on that item on the grid.
+- **The game's hint names only its tabs.** "Filled from other tabs" names the Workbench Drawer and the Tool Cabinets, not the storage of your home.
+- **Fill only.** The mod never starts a craft. You check the grid and click Craft. A batch craft that you start goes on by itself, as in the game.
 
-The mod moves items only with the game's own move to the workbench grid. It changes no game file and writes nothing of its own to the save, so you can remove it at any time.
+The mod adds the storage of your home to the game's own list of places for the fill, so the game fills, counts, and moves the items with its own code. It changes no game file and writes nothing of its own to the save, so you can remove it at any time.
 
 ## Compatibility
 
@@ -24,7 +26,8 @@ Does not work together with [BaseButler](https://www.nexusmods.com/survivallog/m
 
 ## Requirements
 
-The [BepInEx Pack for Survival Log](https://www.nexusmods.com/survivallog/mods/12), the BepInEx 6 (IL2CPP) build for the game.
+- Survival Log 1.1.18153 (the Autumn Update) or later. On an older game version, Craft from any storage turns itself off, and the log says so.
+- The [BepInEx Pack for Survival Log](https://www.nexusmods.com/survivallog/mods/12), the BepInEx 6 (IL2CPP) build for the game.
 
 ## Install
 
@@ -38,7 +41,7 @@ Delete `BetterCrafting.dll` from the `BepInEx\plugins` folder. On the next game 
 
 ## Configuration
 
-The config file is `BepInEx\config\com.ivmakk.survivallog.bettercrafting.cfg`. It has one setting, `Verbose` (default `false`), which logs each fill of the mod at Debug level. It is for troubleshooting only. The mod has no setting for players.
+The config file is `BepInEx\config\com.ivmakk.survivallog.bettercrafting.cfg`. It has one setting, `Verbose` (default `false`), which logs each scan of the storage of your home at Debug level. It is for troubleshooting only. The mod has no setting for players.
 
 ## Troubleshooting
 
@@ -56,7 +59,7 @@ dotnet build src/BetterCrafting.csproj -c Release
 
 `Directory.Build.props` sets `GameDir` to the default Steam installation path. For another location, set the `GameDir` environment variable or pass `-p:GameDir=...` to the build command. The output DLL is `src\bin\Release\BetterCrafting.dll`.
 
-Unit tests cover the recipe key, the missing materials, the pick rule and its order, the move steps, and the recount of the recipe list. The tested code has no game dependencies. It lives in `src/AnyStorage/AnyStorageLogic.cs`.
+Unit tests cover the list of places for the fill: the game's places first and in their order, then the storage of your home, each place once. The tested code has no game dependencies. It lives in `src/AnyStorage/AnyStorageLogic.cs`.
 
 ```
 dotnet test tests/BetterCrafting.Tests
