@@ -26,7 +26,7 @@ Does not work together with [BaseButler](https://www.nexusmods.com/survivallog/m
 
 ## Requirements
 
-- Survival Log 1.1.18153 or later. On an older game version, this version turns itself off. For game version 1.0.17573, use Better Crafting 1.0.0, under Files on the Nexus page.
+- Survival Log 1.1.18153 or later. On an older game version, this version turns itself off. For game version 1.0.17573, use [Better Crafting 1.0.0](https://github.com/ivmakk-sl/sl-better-crafting/releases/tag/v1.0.0).
 - The [BepInEx Pack for Survival Log](https://www.nexusmods.com/survivallog/mods/12), the BepInEx 6 (IL2CPP) build for the game.
 
 ## Install
