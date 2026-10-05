@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-05
+
+### Added
+
+- The setting `CountCache` (section `Performance`, default on), to go back to the counts of 1.1.0 if a count of the recipe list looks wrong.
+
+### Fixed
+
+- A slow craft with much storage in your home. The recipe list counted each material of each recipe again over all items of all storage after each item move. Now it counts them once for each refresh: on a test save with about 2600 stacks in 23 storages, the work of the game in one craft fell from about 0.66 s to 0.07 s, near the 0.05 s without the mod.
+
 ## [1.1.0] - 2026-09-29
 
 ### Added

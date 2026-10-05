@@ -41,7 +41,10 @@ Delete `BetterCrafting.dll` from the `BepInEx\plugins` folder. On the next game 
 
 ## Configuration
 
-The config file is `BepInEx\config\com.ivmakk.survivallog.bettercrafting.cfg`. It has one setting, `Verbose` (default `false`), which logs each scan of the storage of your home at Debug level. It is for troubleshooting only. The mod has no setting for players.
+The config file is `BepInEx\config\com.ivmakk.survivallog.bettercrafting.cfg`. A change in the file applies at the next start of the game. It has two settings:
+
+- `CountCache` in the section `Performance` (default `true`): the mod counts the materials of the workbench places once for each refresh of the recipe list, so a craft stays fast with much storage in your home. Set it to `false` only if a "have / need" count of the recipe list looks wrong. Then the counts work as in version 1.1.0, and a craft is slow again with much home storage.
+- `Verbose` in the section `General` (default `false`): logs each scan of the storage of your home and each count of the recipe list at Debug level. It is for troubleshooting only.
 
 ## Troubleshooting
 

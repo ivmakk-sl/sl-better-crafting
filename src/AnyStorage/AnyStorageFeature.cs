@@ -3,6 +3,7 @@ using System.Linq;
 using BepInEx.Unity.IL2CPP;
 using GameCore.HotUpdate.ReduxUI;
 using HarmonyLib;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace BetterCrafting
 {
@@ -18,8 +19,12 @@ namespace BetterCrafting
         {
             public Type Type;
             public string Method;
+            // The argument types, for a method with an overload.
+            public Type[] Args;
             public Type Patches;
+            public string Prefix;
             public string Postfix;
+            public string Finalizer;
         }
 
         private static readonly PatchTarget[] Targets =
@@ -28,6 +33,19 @@ namespace BetterCrafting
             // Game 1.0 also has GetAllLinkedOwnerIds, but its fill does not use it. This 1.1 method of the fill
             // turns the feature off on 1.0.
             new PatchTarget { Type = typeof(Reducer_Web_ToolTable), Method = "GetLinkedOwnersInFillOrder" },
+        };
+
+        // The count cache: one count of the places for each refresh of the recipe list. A game update that
+        // renames one of these turns off only the cache, and the game counts as in 1.1.0. The interop has two
+        // CountOwnedInPool: the game method with an Il2CppStructArray, and a helper with a long[] that calls it.
+        private static readonly PatchTarget[] CacheTargets =
+        {
+            new PatchTarget { Type = typeof(Reducer_Web_ToolTable), Method = "RefreshRecipeList", Patches = typeof(CountCacheOnRefreshRecipeList),
+                Prefix = nameof(CountCacheOnRefreshRecipeList.Prefix), Postfix = nameof(CountCacheOnRefreshRecipeList.Postfix), Finalizer = nameof(CountCacheOnRefreshRecipeList.Finalizer) },
+            new PatchTarget { Type = typeof(Reducer_Web_ToolTable), Method = "CountOwnedInPool", Args = new[] { typeof(State_Data_Item), typeof(int), typeof(Il2CppStructArray<long>) },
+                Patches = typeof(CountCacheOnCountOwnedInPool), Prefix = nameof(CountCacheOnCountOwnedInPool.Prefix) },
+            new PatchTarget { Type = typeof(Reducer_Web_ToolTable), Method = "CheckMaterialSufficiencyAcrossLinked", Patches = typeof(CountCacheOnCheckMaterialSufficiency),
+                Prefix = nameof(CountCacheOnCheckMaterialSufficiency.Prefix) },
         };
 
         // BaseButler also changes the workbench fill, and with both mods its page script can start a craft by
@@ -42,16 +60,31 @@ namespace BetterCrafting
                 Plugin.Log.LogWarning("BaseButler is installed. It also changes the workbench fill, so Craft from any storage is off.");
                 return;
             }
-            var found = Targets.Select(t => (target: t, method: AccessTools.Method(t.Type, t.Method))).ToList();
+            if (!PatchAll(harmony, Targets, "Craft from any storage")) return;
+            Plugin.Debug("Craft from any storage: on");
+            try
+            {
+                if (PatchAll(harmony, CacheTargets, "The count cache")) Plugin.Debug("Count cache: patched, CountCache=" + Plugin.CountCache.Value);
+            }
+            catch (Exception e) { Plugin.WarnOnce("Count cache patch", e, "The game counts the materials itself."); }
+        }
+
+        // Patches all targets of a group, or none when a target is missing.
+        private static bool PatchAll(Harmony harmony, PatchTarget[] targets, string name)
+        {
+            var found = targets.Select(t => (target: t, method: AccessTools.Method(t.Type, t.Method, t.Args))).ToList();
             var missing = found.Where(f => f.method == null).Select(f => f.target.Type.Name + "." + f.target.Method).ToList();
             if (missing.Count > 0)
             {
-                Plugin.Log.LogWarning("Game methods not found: " + string.Join(", ", missing) + ". Craft from any storage is off.");
-                return;
+                Plugin.Log.LogWarning("Game methods not found: " + string.Join(", ", missing) + ". " + name + " is off.");
+                return false;
             }
             foreach (var (target, method) in found.Where(f => f.target.Patches != null))
-                harmony.Patch(method, postfix: new HarmonyMethod(AccessTools.Method(target.Patches, target.Postfix)));
-            Plugin.Debug("Craft from any storage: on");
+                harmony.Patch(method, Hook(target, target.Prefix), Hook(target, target.Postfix), finalizer: Hook(target, target.Finalizer));
+            return true;
         }
+
+        private static HarmonyMethod Hook(PatchTarget target, string name) =>
+            name == null ? null : new HarmonyMethod(AccessTools.Method(target.Patches, name));
     }
 }
