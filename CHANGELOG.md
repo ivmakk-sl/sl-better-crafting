@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-05
+
+### Added
+
+- The setting `CountCache` (section `Performance`, default on), to go back to the counts of 1.1.0 if a count of the recipe list looks wrong.
+
+### Fixed
+
+- A slow craft with much storage in your home. The recipe list now counts the materials once for each update, not once for each recipe, so crafting stays fast also with large or full storages.
+
 ## [1.1.0] - 2026-09-29
 
 ### Added

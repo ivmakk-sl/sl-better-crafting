@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\src\AnyStorage\AnyStorageLogic.cs" Link="AnyStorageLogic.cs" />
+    <Compile Include="..\..\src\AnyStorage\CountTable.cs" Link="CountTable.cs" />
   </ItemGroup>
 
   <ItemGroup>
