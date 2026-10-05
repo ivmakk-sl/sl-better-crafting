@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
-- A slow craft with much storage in your home. The recipe list counted each material of each recipe again over all items of all storage after each item move. Now it counts them once for each refresh: on a test save with about 2600 stacks in 23 storages, the work of the game in one craft fell from about 0.66 s to 0.07 s, near the 0.05 s without the mod.
+- A slow craft with much storage in your home. The recipe list now counts the materials once for each update, not once for each recipe, so crafting stays fast also with large or full storages.
 
 ## [1.1.0] - 2026-09-29
 
