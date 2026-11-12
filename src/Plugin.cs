@@ -8,7 +8,7 @@ using HarmonyLib;
 
 namespace BetterCrafting
 {
-    [BepInPlugin(PluginGuid, "Better Crafting", "1.1.1")]
+    [BepInPlugin(PluginGuid, "Better Crafting", "1.1.2")]
     [BepInProcess("SurvivalLog.exe")]
     [BepInDependency(AnyStorageFeature.BaseButlerGuid, BepInDependency.DependencyFlags.SoftDependency)]
     public sealed class Plugin : BasePlugin

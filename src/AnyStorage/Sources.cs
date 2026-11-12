@@ -9,7 +9,7 @@ using UnityEngine;
 namespace BetterCrafting
 {
     // The home storage that the game's fill can use: each furniture that passes the game's home scope rule,
-    // the seed rule of the planting window, and has items. The workbench, the furniture of the open window,
+    // the seed rule of the planting window, is no Trash Can, and has items. The workbench, the furniture of the open window,
     // and the game's own owners are left out. The game asks for its owner list once for each recipe of a list
     // refresh, so the list is kept for the current frame and the open window, and the furniture is scanned
     // again only when one of them changes.
@@ -75,6 +75,11 @@ namespace BetterCrafting
                                .Append(FloorTagConstants.IsMapPointUnlocked(world._TagManager, f.MapConfigId) ? " unlocked" : " LOCKED")
                                .Append(" items ").Append(items);
                     else skippedOutside++;
+                    continue;
+                }
+                if (!AnyStorageLogic.IsHomeStorage(f.AgentConfigId))
+                {
+                    skipped?.Append(" skipped ").Append(f.InstanceId).Append(" furniture ").Append(f.AgentConfigId).Append(" items ").Append(items);
                     continue;
                 }
                 result.Add(f.InstanceId);

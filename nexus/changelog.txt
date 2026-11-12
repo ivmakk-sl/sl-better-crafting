@@ -1,3 +1,6 @@
+v1.1.2 - 2026-11-12
+Changed: Crafting from your home storage takes nothing from a Trash Can (game 1.1.21271) and does not count its items: what you throw away stays out of your crafts.
+
 v1.1.1 - 2026-10-05
 Added: The setting CountCache (section Performance, on by default), to go back to the counts of 1.1.0 if a count of the recipe list looks wrong.
 Fixed: Slow crafting with much storage in your home. Crafting now stays fast also with large or full storages.

@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-11-12
+
+### Changed
+
+- Craft from any storage takes no item from a Trash Can (game 1.1.21271) and counts none of its items for a recipe: what you throw away stays out of your crafts.
+
 ## [1.1.1] - 2026-10-05
 
 ### Added

@@ -8,6 +8,19 @@ namespace BetterCrafting.Tests
         private static readonly ISet<long> NoExcluded = new HashSet<long>();
 
         [Fact]
+        public void TheTrashCanIsNoHomeStorage()
+        {
+            Assert.False(AnyStorageLogic.IsHomeStorage(923));
+        }
+
+        [Fact]
+        public void OtherFurnitureIsHomeStorage()
+        {
+            Assert.True(AnyStorageLogic.IsHomeStorage(922));
+            Assert.True(AnyStorageLogic.IsHomeStorage(9295));
+        }
+
+        [Fact]
         public void HomeOwnersFollowTheGameOwnersInTheirOrder()
         {
             var owners = AnyStorageLogic.AppendOwners(new long[] { 5, 1, 4 }, new long[] { 30, 20 }, NoExcluded);
